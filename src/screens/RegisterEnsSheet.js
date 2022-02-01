@@ -14,7 +14,7 @@ import {
   Column,
   Columns,
   Heading,
-  Row,
+  Inline,
   Stack,
   Text,
 } from '@rainbow-me/design-system';
@@ -115,13 +115,13 @@ export default function RegisterEnsSheet() {
                   </Text>
                 </Column>
               </Columns>
-              <Row>
+              <Inline wrap={false}>
                 <Text color="secondary40" size="18px" weight="bold">
                   {registration.isRegistered
                     ? `Til ${registration.expiryDate}`
                     : `"Price"`}
                 </Text>
-              </Row>
+              </Inline>
               {!registration.isRegistered && (
                 <Text color="secondary40" size="18px" weight="bold">
                   Estimated cost?
@@ -132,14 +132,19 @@ export default function RegisterEnsSheet() {
         </Box>
         <Box>
           {debouncedSearchQuery.length < 3 && (
-            <Row alignHorizontal="center" alignVertical="center" space="6px">
+            <Inline
+              alignHorizontal="center"
+              alignVertical="center"
+              space="6px"
+              wrap={false}
+            >
               <Box>
                 <ImgixImage source={dice} style={{ height: 20, width: 20 }} />
               </Box>
               <Text color="secondary50" size="16px" weight="bold">
                 Minimum 3 characters
               </Text>
-            </Row>
+            </Inline>
           )}
           <SheetActionButtonRow>
             {isSuccess && debouncedSearchQuery.length > 2 && (

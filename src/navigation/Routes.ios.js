@@ -8,6 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 import { InitialRouteContext } from '../context/initialRoute';
 import AddCashSheet from '../screens/AddCashSheet';
 import AddTokenSheet from '../screens/AddTokenSheet';
+import AssignEnsRecordsSheet from '../screens/AssignEnsRecordsSheet';
 import AvatarBuilder from '../screens/AvatarBuilder';
 import BackupSheet from '../screens/BackupSheet';
 import ChangeWalletSheet from '../screens/ChangeWalletSheet';
@@ -93,6 +94,10 @@ function RegisterENSFlowNavigator() {
       <Stack.Screen
         component={RegisterEnsSheet}
         name={Routes.REGISTER_ENS_SHEET}
+      />
+      <Stack.Screen
+        component={AssignEnsRecordsSheet}
+        name={Routes.ASSIGN_ENS_RECORDS_SHEET}
       />
     </Stack.Navigator>
   );
