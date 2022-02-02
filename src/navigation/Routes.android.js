@@ -8,6 +8,7 @@ import AddTokenSheet from '../screens/AddTokenSheet';
 import AvatarBuilder from '../screens/AvatarBuilder';
 import BackupSheet from '../screens/BackupSheet';
 import ChangeWalletSheet from '../screens/ChangeWalletSheet';
+import ConfirmENSSheet from '../screens/ConfirmENSSheet';
 import ConnectedDappsSheet from '../screens/ConnectedDappsSheet';
 import DepositModal from '../screens/DepositModal';
 import ExpandedAssetSheet from '../screens/ExpandedAssetSheet';
@@ -16,7 +17,6 @@ import ImportSeedPhraseSheet from '../screens/ImportSeedPhraseSheet';
 import ModalScreen from '../screens/ModalScreen';
 import PinAuthenticationScreen from '../screens/PinAuthenticationScreen';
 import ReceiveModal from '../screens/ReceiveModal';
-import RegisterEnsSheet from '../screens/RegisterEnsSheet';
 import RestoreSheet from '../screens/RestoreSheet';
 import SavingsSheet from '../screens/SavingsSheet';
 import SendConfirmationSheet from '../screens/SendConfirmationSheet';
@@ -31,6 +31,7 @@ import WalletDiagnosticsSheet from '../screens/WalletDiagnosticsSheet';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import WithdrawModal from '../screens/WithdrawModal';
 import WyreWebview from '../screens/WyreWebview';
+import RegisterENSNavigator from './RegisterENSNavigator';
 import { SwipeNavigator } from './SwipeNavigator';
 import { createBottomSheetNavigator } from './bottom-sheet';
 import {
@@ -73,20 +74,6 @@ function SendFlowNavigator() {
         component={SendSheet}
         name={Routes.SEND_SHEET}
         options={sheetPreset}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function RegisterENSFlowNavigator() {
-  return (
-    <Stack.Navigator
-      {...stackNavigationConfig}
-      initialRouteName={Routes.REGISTER_ENS_SHEET}
-    >
-      <Stack.Screen
-        component={RegisterEnsSheet}
-        name={Routes.REGISTER_ENS_SHEET}
       />
     </Stack.Navigator>
   );
@@ -282,10 +269,19 @@ function BSNavigator() {
         name={Routes.TOKEN_INDEX_SHEET}
       />
       {PROFILES_ENABLED === 'YES' && (
-        <BSStack.Screen
-          component={RegisterENSFlowNavigator}
-          name={Routes.REGISTER_ENS_SHEET_NAVIGATOR}
-        />
+        <>
+          <BSStack.Screen
+            component={RegisterENSNavigator}
+            name={Routes.REGISTER_ENS_NAVIGATOR}
+            options={{
+              backdropOpacity: 1,
+            }}
+          />
+          <BSStack.Screen
+            component={ConfirmENSSheet}
+            name={Routes.CONFIRM_ENS_SHEET}
+          />
+        </>
       )}
       <BSStack.Screen
         component={ShowcaseSheet}
